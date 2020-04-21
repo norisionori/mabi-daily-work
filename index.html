@@ -91,7 +91,7 @@
 
         $.getJSON(path)
             .done(function (json) {
-                todoList = JSONencode(json);
+                todoList = JSON.parse(json);
             })
             .fail(function () {
                 todoList = {
@@ -175,26 +175,6 @@
 
             <!-- ToDo LIST -->
             <div id="todolist" class="col-9 flow pt-4" style="height:100%;">
-
-                <div class="card todo mb-4">
-                    <div class="card-header bg-primary text-white p-1 font-weight-bold">
-                        daily：影ミッション Today タルティーン
-                        <button type="button"
-                            class="btn btn-sm bg-transparent border-white text-white font-weight-bold float-right complete"
-                            style="margin-left:5px;width:27px;">×</button>
-                        <button type="button"
-                            class="btn btn-sm bg-transparent border-white text-white font-weight-bold float-right toggle"
-                            style="margin-left:5px;width:27px;">_</button>
-                    </div>
-                    <div class="card-body p-2">
-                        デイリーミッションをクリアする
-                        <div class="alert alert-danger p-1 m-0" role="alert">
-                            <small>クエストセット＋完了確認　ヨシ！</small>
-                        </div>
-                        <small>場所：タルティーン　NPC：クエストボード　報酬：ミッション報酬２倍</small>
-                    </div>
-                </div>
-
             </div>
 
             <!-- Other -->
