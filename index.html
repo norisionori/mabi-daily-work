@@ -91,7 +91,7 @@
 
         $.getJSON(path)
             .done(function (json) {
-                todoList = JSON.parse(json);
+                todoList = json;
             })
             .fail(function () {
                 todoList = {
