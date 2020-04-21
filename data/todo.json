@@ -1,0 +1,277 @@
+{
+    "todo": [
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "ランストーナメント",
+            "subject": "ランストーナメントに参加する",
+            "place": "タラ",
+            "npc": "リリス",
+            "rewards": "勝者の証"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "デイリー影ミッション（タルティーン）",
+            "subject": "デイリーミッションをクリアする",
+            "place": "タルティーン",
+            "npc": "ミッション掲示板",
+            "rewards": "経験値,AP交換券",
+            "caution": "事前のクエストセット確認、事後の完了押下確認　ヨシ！"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "デイリー影ミッション（タラ）",
+            "subject": "デイリーミッションをクリアする",
+            "place": "タラ",
+            "npc": "ミッション掲示板",
+            "rewards": "経験値,AP交換券",
+            "caution": "事前のクエストセット確認、事後の完了押下確認　ヨシ！"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "グランドマスター",
+            "subject": "グランドマスタークエストを処理する",
+            "place": "タラ",
+            "npc": "レザール",
+            "rewards": "グランドマスターの印"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "ベテラン魔族ダンジョン",
+            "subject": "ベテランダンジョンをクリアする",
+            "place": "ダンバートン",
+            "npc": "プールナブロンの調査員",
+            "rewards": "経験値,冒険家の印章,AP交換券",
+            "caution": "事前に[ウルラのダンジョン攻略]をエヴァンに確認"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "昇段試験",
+            "subject": "昇段試験に挑戦する",
+            "place": "イメンマハ",
+            "npc": "昇段試験案内人",
+            "rewards": "昇段バッジ"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "採集",
+            "subject": "反復採集クエストをクリアする",
+            "place": "任意",
+            "npc": "なし",
+            "rewards": "経験値上昇の黄金の実,冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "農場",
+            "subject": "農場を管理する",
+            "place": "タルティーン農場",
+            "npc": "なし",
+            "rewards": "農作物"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "使途レイド",
+            "subject": "週間指令/１日指令の目標を達成する",
+            "place": "イメンマハ",
+            "npc": "なし",
+            "rewards": "神聖経験値"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "ベルテンミッション",
+            "subject": "ベルテンミッションを完了する",
+            "place": "アヴァロンゲート",
+            "npc": "なし",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "略奪者親分オーガ1匹退治",
+            "subject": "略奪者親分オーガ1匹退治する",
+            "place": "ベルファスト",
+            "npc": "キヌ",
+            "rewards": "ベルファストの印章、冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "プリズンゴースト退治",
+            "subject": "プリズンゴースト退治する",
+            "place": "メトス",
+            "npc": "情報隊員",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "イカダで☆30",
+            "subject": "イカダで☆30を達成する",
+            "place": "クルクレ",
+            "npc": "イカダサポーター",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "戦闘",
+            "title": "気球で☆30",
+            "subject": "気球で☆30を達成する",
+            "place": "ザルディン",
+            "npc": "ベリタ",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "料理",
+            "subject": "料理する",
+            "place": "イメンマハ",
+            "npc": "ゴードン",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "料理",
+            "subject": "料理する",
+            "place": "イメンマハ",
+            "npc": "ゴードン",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "ハンディクラフト",
+            "subject": "ハンディクラフト",
+            "place": "イメンマハ",
+            "npc": "人形工房マコーレー",
+            "rewards": "冒険家の印章,鉱石"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "トマトバジルサラダを渡す",
+            "subject": "トマトバジルサラダを渡す",
+            "place": "ベルファスト",
+            "npc": "ヒコ",
+            "rewards": "冒険家の印章,ベルファストの印章"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "ベジタブルカナッペを渡す",
+            "subject": "ベジタブルカナッペを渡す",
+            "place": "ベルファスト",
+            "npc": "ラーフ",
+            "rewards": "冒険家の印章,ベルファストの印章"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "マジッククラフト",
+            "subject": "マジッククラフト",
+            "place": "シリエン生態保護地区",
+            "npc": "バイス",
+            "rewards": "冒険家の印章,神秘なハーブパウダー"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "ヒルウェン工学",
+            "subject": "ヒルウェン工学",
+            "place": "ヒルウェン鉱山",
+            "npc": "ヘクター",
+            "rewards": "冒険家の印章,エメラルドコア"
+        },
+        {
+            "routine": "all",
+            "category": "生産",
+            "title": "ホワイトハーブを渡す",
+            "subject": "ホワイトハーブを渡す",
+            "place": "渦巻き模様から南東方向の湖付近",
+            "npc": "ラルフ",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "釣り",
+            "title": "釣ったアイテムを渡す",
+            "subject": "釣ったアイテムを渡す",
+            "place": "ベルファスト",
+            "npc": "モナット",
+            "rewards": "ベルファストの印章,冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "釣り",
+            "title": "釣ったアイテムを渡す",
+            "subject": "釣ったアイテムを渡す",
+            "place": "ベルファスト",
+            "npc": "パダルル",
+            "rewards": "ベルファストの印章,冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "釣り",
+            "title": "真珠貝を渡す",
+            "subject": "真珠貝を渡す",
+            "place": "ベルファスト",
+            "npc": "パダルル",
+            "rewards": "ベルファストの印章,冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "釣り",
+            "title": "マカジキを渡す",
+            "subject": "マカジキを渡す",
+            "place": "カブ",
+            "npc": "マノリン",
+            "rewards": "冒険家の印章,ランダムで改造石など"
+        },
+        {
+            "routine": "all",
+            "category": "交易",
+            "title": "交易する",
+            "subject": "交易する",
+            "place": "任意",
+            "npc": "交易サポーターゴブリン",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "探検",
+            "title": "遺跡発見10回",
+            "subject": "遺跡発見10回",
+            "place": "ケルラベースキャンプ",
+            "npc": "アレクシーナ",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "探検",
+            "title": "NPC4名と会話",
+            "subject": "NPC4名と会話",
+            "place": "ラノ",
+            "npc": "ラムバート博士",
+            "rewards": "冒険家の印章"
+        },
+        {
+            "routine": "all",
+            "category": "探検",
+            "title": "NPCに補給品を渡す",
+            "subject": "NPCに補給品を渡す",
+            "place": "ムユ砂漠",
+            "npc": "アンジェリナ",
+            "rewards": "冒険家の印章"
+        }
+    ]
+}

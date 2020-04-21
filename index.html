@@ -1,52 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+
 
 <head>
-    <meta charset="utf-8">
-    <title>Mabi daily work</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Mabinogi daily work</title>
 </head>
-<script language="javascript" type="text/javascript">
-    window.onload = function () {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', "./data.csv", true);
-        xhr.onload = () => {
-            const csv = xhr.responseText;
-            showCsvAsTable(csv);
-        };
-        xhr.send();
-    };
-    function showCsvAsTable(csv) {
-        const rows = csv.split('\n');
-        const table = document.createElement('table')
-        const header = rows[0].split(',');
-        const tr = document.createElement('tr');
-        tr.appendChild(document.createElement('th'));
-        for (var i = 0; i < header.length; i++) {
-            var th = document.createElement('th');
-            th.textContent = header[i];
-            tr.appendChild(th);
-        }
-        table.appendChild(tr);
-        for (var i = 1; i < rows.length; i++) {
-            const tr = document.createElement('tr');
-            var td = document.createElement('td');
-            var checkbox = document.createElement('input');
-            checkbox.type = "checkbox"
-            td.appendChild(checkbox);
-            tr.appendChild(td);
-            const cells = rows[i].split(',');
-            for (var j = 0; j < cells.length; j++) {
-                var td = document.createElement('td');
-                td.textContent = cells[j];
-                tr.appendChild(td);
-            }
-            table.appendChild(tr);
-        }
-        document.body.appendChild(table);
+
+<!-- include -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- include summernote css/js -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script>
+    function getErinnTime(datetime) {
+        const h = datetime.getHours();
+        const m = datetime.getMinutes();
+        const s = datetime.getSeconds();
+
+        const real_seconds = Number(h) * 3600 + Number(m) * 60 + Number(s);
+        const erinn_seconds = real_seconds % (36 * 60);
+        const erinn_time = (24) * (erinn_seconds / (36 * 60));
+
+        const eh = Math.floor(erinn_time);
+        const em = Math.floor(60 * (erinn_time - Math.floor(erinn_time)));
+
+        return [eh, em];
     }
+
+    function renderTodoList(listdata) {
+        let html = "";
+
+        for (e of listdata) {
+            html += ``
+                + `<div class="card todo mb-4">`
+                + `    <div class="card-header bg-primary text-white p-1 font-weight-bold">`
+                + `        <p class="float-left"><span class="badge badge-light">${e.category}</span> ${e.title}</p>`
+                + `        <button type="button" class="btn btn-sm bg-transparent border-white text-white font-weight-bold float-right complete" style="margin-left:5px;width:27px;">×</button>`
+                + `        <button type="button" class="btn btn-sm bg-transparent border-white text-white font-weight-bold float-right toggle" style="margin-left:5px;width:27px;">_</button>`
+                + `    </div>`
+                + `    <div class="card-body p-2">`
+                + `        <p class="mb-2">${e.subject}</p>`
+                + `        ${(e.caution) ? '<div class="alert alert-danger p-1 m-0" role="alert"><small>' + e.caution + '</small></div>' : ''}`
+                + `    </div>`
+                + `    <div class="card-footer p-1">`
+                + `        <small>場所：${e.place}　NPC：${e.place}　報酬：${e.rewards}</small>`
+                + `        <button type="button" class="btn btn-sm btn-primary border-white text-white font-weight-bold float-right complete">完了</button>`
+                + `    </div>`
+                + `</div>`;
+        }
+
+        const resetButton = `<button class="btn-lg btn-primary w-100 reset">リセット</button>`;
+        html += resetButton;
+
+        return html;
+    }
+
+    $(document).ready(function () {
+        // ◆エリン時計
+        setInterval(function () {
+            const [eh, em] = getErinnTime(new Date());
+
+            const ehh = ('0' + eh).slice(-2);
+            const emm = ('0' + em).slice(-2);
+
+            $("#mabi-clock #time").text(ehh + ":" + emm);
+
+        }, 1000);
+
+
+        // ◆ToDoリスト
+        const path = "./data/todo.json";
+        let todoList = {};
+
+        $.getJSON(path)
+            .done(function (json) {
+                todoList = JSONencode(json);
+            })
+            .fail(function () {
+                todoList = {
+                    "todo": [
+                        {
+                            "routine": "all",
+                            "category": "戦闘",
+                            "title": "読込異常",
+                            "subject": "JSONよみこみにしっぱい",
+                            "place": "Error",
+                            "npc": "Error",
+                            "rewards": "Error"
+                        }
+                    ]
+                }
+            })
+            .always(function () {
+                const listhtml = renderTodoList(todoList.todo);
+                $("#todolist").html(listhtml);
+
+                // ◆cardおりたたみ
+                $(".toggle").on("click", function () {
+                    $(this).parent("div").next("div").toggle(200);
+                    if ($(this).text() == "□") {
+                        $(this).text("＿");
+                    } else {
+                        $(this).text("□");
+                    }
+                });
+
+                // ◆完了：カード非表示
+                $(".complete").on("click", function () {
+                    $(this).parent("div").parent(".todo").hide(200);
+                });
+
+                // ◆リセット：カード再表示
+                $(".reset").on("click", function () {
+                    $(".todo").show();
+                });
+
+            });
+
+    });
+
 </script>
 
+
+
 <body>
+    <header class="site-header bg-primary">
+        <nav class="navbar navbar-expand navbar-default center">
+            <!-- Site Title -->
+            <a class="navbar-brand" href="index.html" title="HOME" rel="home">
+                <p class="navbar-text">
+                    <span class="title text-white font-weight-bold">Mabinogi</span>
+                    <span class="sub-title text-white font-weight-light">DAILY WORK</span>
+                </p>
+            </a>
+
+            <!-- Nav Menu -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="makescenario.html">SCENARIO</a>
+                    </li>
+                    -->
+                </ul>
+                <div id="mabi-clock" class="mabi-clock navbar-right text-white p-0">
+                    <img class="float-left" width="35px" height="35px" src="./img/icon.png">
+                    <p class="float-left" id="time">00:00</p>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="content center" style="height:100%;">
+        <div class="row" style="height:100%;">
+
+            <!-- ToDo LIST -->
+            <div id="todolist" class="col-9 flow pt-4" style="height:100%;">
+
+                <div class="card todo mb-4">
+                    <div class="card-header bg-primary text-white p-1 font-weight-bold">
+                        daily：影ミッション Today タルティーン
+                        <button type="button"
+                            class="btn btn-sm bg-transparent border-white text-white font-weight-bold float-right complete"
+                            style="margin-left:5px;width:27px;">×</button>
+                        <button type="button"
+                            class="btn btn-sm bg-transparent border-white text-white font-weight-bold float-right toggle"
+                            style="margin-left:5px;width:27px;">_</button>
+                    </div>
+                    <div class="card-body p-2">
+                        デイリーミッションをクリアする
+                        <div class="alert alert-danger p-1 m-0" role="alert">
+                            <small>クエストセット＋完了確認　ヨシ！</small>
+                        </div>
+                        <small>場所：タルティーン　NPC：クエストボード　報酬：ミッション報酬２倍</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Other -->
+            <div class="col-3 flow pt-4" style="height:100%;">
+                <!-- 追加機能はここに -->
+                リッチスケッチタイマー<br>
+                私の騎士団カウンタ
+            </div>
+
+        </div>
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="footer">
+            <p class="text-dark">make your fantasy life!</p>
+        </div>
+    </footer>
+
 </body>
 
 </html>

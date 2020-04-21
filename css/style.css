@@ -1,0 +1,371 @@
+﻿    /**
+     * YUI 3.5.0 - reset.css (http://developer.yahoo.com/yui/3/cssreset/)
+     * https://cssreset.com/
+     * Copyright 2012 Yahoo! Inc. All rights reserved.
+     * http://yuilibrary.com/license/
+     */
+    /*
+    	TODO will need to remove settings on HTML since we can't namespace it.
+    	TODO with the prefix, should I group by selector or property for weight savings?
+    */
+    
+    html {
+        color: #000;
+        background: #FFF;
+        font-size:14px;
+    }
+    /*
+    	TODO remove settings on BODY since we can't namespace it.
+    */
+    /*
+    	TODO test putting a class on HEAD.
+    		- Fails on FF.
+    */
+    
+    body,
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    code,
+    form,
+    fieldset,
+    legend,
+    input,
+    textarea,
+    p,
+    blockquote,
+    th,
+    td {
+        margin: 0;
+        padding: 0;
+    }
+    
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    
+    fieldset,
+    img {
+        border: 0;
+    }
+    /*
+    	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...
+    */
+    
+    address,
+    caption,
+    cite,
+    code,
+    dfn,
+    em,
+    strong,
+    th,
+    var {
+        font-style: normal;
+        font-weight: normal;
+    }
+    
+    ol,
+    ul {
+        list-style: none;
+    }
+    
+    caption,
+    th {
+        text-align: left;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 100%;
+        font-weight: normal;
+    }
+    
+    q:before,
+    q:after {
+        content: '';
+    }
+    
+    abbr,
+    acronym {
+        border: 0;
+        font-variant: normal;
+    }
+    /* to preserve line-height and selector appearance */
+    
+    sup {
+        vertical-align: text-top;
+    }
+    
+    sub {
+        vertical-align: text-bottom;
+    }
+    
+    input,
+    textarea,
+    select {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+    /*to enable resizing for IE*/
+    
+    input,
+    textarea,
+    select {
+        *font-size: 100%;
+    }
+    /*because legend doesn't inherit in IE */
+    
+    legend {
+        color: #000;
+    }
+    /* YUI CSS Detection Stamp */
+    
+    #yui3-css-stamp.cssreset {
+        display: none;
+    }
+
+/* 
+=========================================================================
+= FONT ==================================================================
+=========================================================================
+*/
+    
+/* 
+=========================================================================
+= BODY ==================================================================
+=========================================================================
+*/
+    
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+    
+    body {
+        height: 100%;
+        overflow-y: scroll;
+        margin-bottom: 70px;
+        width: 100%;
+    }
+    
+    input:focus {
+        border: solid 1px #00003F;
+    }
+   
+    
+    .bg-primary {
+        background-color:#2196F3 !important;
+    }
+
+    .bg-secondary {
+        
+    }
+
+    .btn-primary {
+        font-weight: 800;
+        text-align: center;
+        text-decoration: none;
+        background-image: none;
+        background-color: #2196F3 !important;
+        border-color: #2196F3 !important;
+        box-shadow: none;
+        transition: background-color 0.2s;
+    }
+    
+    .btn-primary:hover {
+        background-color: #ffffff!important;
+        color: #2196F3 !important;
+    }
+    
+    .btn-secondary {
+        font-weight: 400;
+        text-align: center;
+        text-decoration: none;
+        background-image: none;
+        background-color: #ffffff;
+        border-color: #00003F;
+        box-shadow: none;
+        color: #00003F;
+        transition: background-color 0.2s;
+    }
+    
+/* 
+=========================================================================
+= HEADER ================================================================
+=========================================================================
+*/
+    
+    .site-header {
+        width: 100%;
+        height: 50px;
+    }
+    
+    .navbar {
+        width: 100%;
+        min-width: 576px;
+        max-width: 1600px;
+        height: 50px;
+        border: none;
+        padding: 0;
+    }
+    
+    .navbar-default {
+        background-image: none;
+    }
+    
+
+    .navbar-brand {
+        padding: 0px 0px 0px 10px;
+        height: 50px;
+    }
+    
+    .navbar-brand .title {
+        display: block;
+        font-size: 15px;
+        letter-spacing: 26px;
+        line-height: 13px;
+        padding-left:2px;
+        margin-top: -5px;
+        width: 100%;
+    }
+    
+    .navbar-brand .sub-title {
+        display: block;
+        font-size: 30px;
+        letter-spacing: 10px;
+        line-height: 30px;
+        width: 100%;
+    }
+
+
+    #mabi-clock{
+        font-size:40px;
+        line-height:40px;
+        margin:-5px 10px 0px 0px;
+    }
+
+    #mabi-clock img {
+        animation: rotate-anime 3s linear infinite;
+        margin:5px 5px 0px 10px;
+    }
+    @keyframes rotate-anime {
+        0%  {transform: rotate(0);}
+        100%  {transform: rotate(360deg);}
+    }
+/* 
+=========================================================================
+= CONTENT ================================================================
+=========================================================================
+*/
+
+
+/* 
+=========================================================================
+= FOOTER ================================================================
+=========================================================================
+*/
+    
+    .site-footer {
+        height: 50px;
+        width: 100%;
+        bottom: 0;
+        overflow: hidden;
+        position: absolute;
+    }
+    
+    .footer {
+        background-color: #EEEEEE;
+        width: 100%;
+        max-width: calc(1600px - 20px);
+        min-width: calc(576px - 20px);
+        margin-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        right: 0;
+        left: 0;
+        font-size: 12px;
+        text-align: center;
+        overflow: hidden;
+    }
+
+/* 
+=========================================================================
+= CONTENT ===============================================================
+=========================================================================
+*/
+    
+    .content {
+        width: 100%;
+        min-width: calc(576px - 20px);
+        max-width: calc(1600px - 20px);
+        height: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 0px;
+    }
+    
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+
+    
+
+
+/*
+=========================================================================
+= Loader ================================================================
+=========================================================================
+*/
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #00003F;
+
+  margin: 300px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
