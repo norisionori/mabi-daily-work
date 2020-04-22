@@ -28,121 +28,17 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-<script>
-    function getErinnTime(datetime) {
-        const h = datetime.getHours();
-        const m = datetime.getMinutes();
-        const s = datetime.getSeconds();
 
-        const real_seconds = Number(h) * 3600 + Number(m) * 60 + Number(s);
-        const erinn_seconds = real_seconds % (36 * 60);
-        const erinn_time = (24) * (erinn_seconds / (36 * 60));
+<!-- ◆機能◆ -->
+<script type="text/javascript" src="js/erinntimer.js"></script>
+<script type="text/javascript" src="js/todo.js"></script>
 
-        const eh = Math.floor(erinn_time);
-        const em = Math.floor(60 * (erinn_time - Math.floor(erinn_time)));
-
-        return [eh, em];
-    }
-
-    function renderTodoList(listdata) {
-        let html = "";
-
-        for (e of listdata) {
-            html += ``
-                + `<div class="card todo mb-4">`
-                + `    <div class="card-header bg-primary text-white p-1 font-weight-bold">`
-                + `        <p class="float-left"><span class="badge badge-light">${e.category}</span> ${e.title}</p>`
-                + `        <button type="button" class="btn btn-sm bg-transparent border-white text-white font-weight-bold float-right complete" style="margin-left:5px;width:27px;">×</button>`
-                + `        <button type="button" class="btn btn-sm bg-transparent border-white text-white font-weight-bold float-right toggle" style="margin-left:5px;width:27px;">_</button>`
-                + `    </div>`
-                + `    <div class="card-body p-2">`
-                + `        <p class="mb-2">${e.subject}</p>`
-                + `        ${(e.caution) ? '<div class="alert alert-danger p-1 m-0" role="alert"><small>' + e.caution + '</small></div>' : ''}`
-                + `    </div>`
-                + `    <div class="card-footer p-1">`
-                + `        <small>場所：${e.place}　NPC：${e.place}　報酬：${e.rewards}</small>`
-                + `        <button type="button" class="btn btn-sm btn-primary border-white text-white font-weight-bold float-right complete">完了</button>`
-                + `    </div>`
-                + `</div>`;
-        }
-
-        const resetButton = `<button class="btn-lg btn-primary w-100 reset">リセット</button>`;
-        html += resetButton;
-
-        return html;
-    }
-
-    $(document).ready(function () {
-        // ◆エリン時計
-        setInterval(function () {
-            const [eh, em] = getErinnTime(new Date());
-
-            const ehh = ('0' + eh).slice(-2);
-            const emm = ('0' + em).slice(-2);
-
-            $("#mabi-clock #time").text(ehh + ":" + emm);
-
-        }, 1000);
-
-
-        // ◆ToDoリスト
-        const path = "https://aaaanwz.github.io/mabi-daily-work/data/todo.json";
-        let todoList = {};
-
-        $.getJSON(path)
-            .done(function (json) {
-                todoList = json;
-            })
-            .fail(function () {
-                todoList = {
-                    "todo": [
-                        {
-                            "routine": "all",
-                            "category": "戦闘",
-                            "title": "読込異常",
-                            "subject": "JSONよみこみにしっぱい",
-                            "place": "Error",
-                            "npc": "Error",
-                            "rewards": "Error"
-                        }
-                    ]
-                }
-            })
-            .always(function () {
-                const listhtml = renderTodoList(todoList.todo);
-                $("#todolist").html(listhtml);
-
-                // ◆cardおりたたみ
-                $(".toggle").on("click", function () {
-                    $(this).parent("div").next("div").toggle(200);
-                    if ($(this).text() == "□") {
-                        $(this).text("＿");
-                    } else {
-                        $(this).text("□");
-                    }
-                });
-
-                // ◆完了：カード非表示
-                $(".complete").on("click", function () {
-                    $(this).parent("div").parent(".todo").hide(200);
-                });
-
-                // ◆リセット：カード再表示
-                $(".reset").on("click", function () {
-                    $(".todo").show();
-                });
-
-            });
-
-    });
-
-</script>
 
 
 
 <body>
-    <header class="site-header bg-primary">
-        <nav class="navbar navbar-expand navbar-default center">
+    <header class="site-header bg-secondary">
+        <nav class="navbar navbar-expand navbar-default center p-0">
             <!-- Site Title -->
             <a class="navbar-brand" href="index.html" title="HOME" rel="home">
                 <p class="navbar-text">
@@ -160,6 +56,7 @@
                     </li>
                     -->
                 </ul>
+
                 <div id="mabi-clock" class="mabi-clock navbar-right text-white p-0">
                     <img class="float-left" width="35px" height="35px" src="./img/icon.png">
                     <p class="float-left" id="time">00:00</p>
@@ -170,7 +67,7 @@
     </header>
 
 
-    <main class="content center" style="height:100%;">
+    <main class="site-contents center">
         <div class="row" style="height:100%;">
 
             <!-- ToDo LIST -->
@@ -178,10 +75,39 @@
             </div>
 
             <!-- Other -->
-            <div class="col-3 flow pt-4" style="height:100%;">
-                <!-- 追加機能はここに -->
-                リッチスケッチタイマー<br>
-                私の騎士団カウンタ
+            <div class="col-3 flow pt-4 pl-0" style="height:100%;">
+                <!-- ◆追加機能はここから◆ -->
+
+                <!-- アークリッチスケッチ -->
+                <div class="card litch mb-4">
+                    <div class="card-header p-1">
+                        <p class="float-left">アークリッチスケッチ</p>
+                    </div>
+                    <div class="card-body p-2">
+                        アークリッチスケッチの時計
+                    </div>
+                </div>
+
+                <!-- アークリッチスケッチ -->
+                <div class="card lance mb-4">
+                    <div class="card-header p-1">
+                        <p class="float-left">ランストーナメント</p>
+                    </div>
+                    <div class="card-body p-2">
+                        ランストーナメントの時計
+                    </div>
+                </div>
+
+
+                <!-- 私の騎士団 -->
+                <div class="card kishidan mb-4">
+                    <div class="card-header p-1">
+                        <p class="float-left">私の騎士団</p>
+                    </div>
+                    <div class="card-body p-2">
+                        私の騎士団の選択肢テーブルカウンタ
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -189,7 +115,7 @@
 
 
     <footer class="site-footer">
-        <div class="footer">
+        <div class="footer center">
             <p class="text-dark">make your fantasy life!</p>
         </div>
     </footer>
