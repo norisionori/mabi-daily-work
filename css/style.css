@@ -156,75 +156,92 @@
     
     html {
         position: relative;
-        min-height: 100%;
+        height:100%;
     }
     
     body {
-        height: 100%;
+        min-height:100%;
         overflow-y: scroll;
-        margin-bottom: 70px;
         width: 100%;
+        background-image: url("../img/nao.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: right bottom;
     }
     
     input:focus {
         border: solid 1px #00003F;
     }
-   
+
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
     
     .bg-primary {
-        background-color:#2196F3 !important;
+        background-color:#154d8e !important;
     }
 
     .bg-secondary {
-        
     }
 
     .btn-primary {
         font-weight: 800;
         text-align: center;
         text-decoration: none;
-        background-image: none;
-        background-color: #2196F3 !important;
-        border-color: #2196F3 !important;
-        box-shadow: none;
+        border:1.5px solid #154d8e !important;
+        border-radius:4px !important;
+        color:#ffffff !important;
+	    box-shadow:inset 0px 12px 0px 0px #62c0d6 !important;
+    	background:linear-gradient(to bottom, #62c0d6 5%, #3a9dd1 100%) !important;
+	    background-color:#62c0d6 !important;
+	    border:1px solid #154d8e !important;
+    	display:inline-block;
         transition: background-color 0.2s;
     }
     
     .btn-primary:hover {
-        background-color: #ffffff!important;
-        color: #2196F3 !important;
+	    background-color:#154d8e !important;
     }
     
     .btn-secondary {
         font-weight: 400;
         text-align: center;
         text-decoration: none;
-        background-image: none;
-        background-color: #ffffff;
+        background-color: transparent !important;
         border-color: #00003F;
         box-shadow: none;
         color: #00003F;
         transition: background-color 0.2s;
     }
     
+
 /* 
 =========================================================================
 = HEADER ================================================================
 =========================================================================
 */
-    
     .site-header {
         width: 100%;
         height: 50px;
+        position:fixed;
+        background-color:rgba(0,0, 0, 0.8) !important;
+        border-bottom:solid 1px #0fb2b4 !important;
+        text-shadow:0 0 5px #0fb2b4,0 0 5px #0fb2b4;
+        border-bottom:2px solid #000000;
+        box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+        z-index:999;
+
     }
     
     .navbar {
         width: 100%;
         min-width: 576px;
-        max-width: 1600px;
+        max-width: 800px;
         height: 50px;
         border: none;
-        padding: 0;
     }
     
     .navbar-default {
@@ -255,7 +272,6 @@
         width: 100%;
     }
 
-
     #mabi-clock{
         font-size:40px;
         line-height:40px;
@@ -265,17 +281,86 @@
     #mabi-clock img {
         animation: rotate-anime 3s linear infinite;
         margin:5px 5px 0px 10px;
+        filter: drop-shadow(0px 0px 10px rgba(15,178,180,0.8));
     }
     @keyframes rotate-anime {
         0%  {transform: rotate(0);}
         100%  {transform: rotate(360deg);}
     }
+    
 /* 
 =========================================================================
-= CONTENT ================================================================
+= CONTENT ===============================================================#84f7f9
 =========================================================================
 */
 
+    .site-contents{
+        height:100%;
+        width: 100%;
+        min-width: 576px;
+        max-width: 800px;
+        padding-top:50px;
+    }
+
+    .site-contents .card{
+        border:1.5px solid #154d8e;
+        border-radius:2px;
+        color:#ffffff;
+        background-color:transparent;
+        text-shadow:0px 0px 4px #154d8e;
+    }
+
+    .site-contents .card .card-header
+    {
+        background-color:rgba(58,157,209,0.9);
+        border-top:1.5px solid #62c0d6;
+        border-right:1.5px solid #154d8e;
+        border-bottom:1.5px solid #154d8e;
+        border-left:1.5px solid #62c0d6;
+        font-weight: bold;
+    }
+    .site-contents .card .card-footer,
+    .site-contents .card .card-body{
+        background-color:rgba(58,157,209,0.9);
+        border-right:1.5px solid #154d8e;
+        border-bottom:1.5px solid #154d8e;
+        border-left:1.5px solid #62c0d6;
+    }
+    .site-contents .card button{
+        background-color:transparent;
+        border:1.5px solid #154d8e;
+        color:#154d8e;
+    }
+
+    .site-contents .card .badge,
+    .site-contents .card .alert {
+        text-shadow:none;
+    }
+
+    .site-contents .nav-tabs{
+        border-bottom:2px solid #154d8e !important;
+        margin-bottom:10px;
+    }
+    .site-contents .nav-item{
+        margin-right:5px;
+    }
+    .site-contents .nav-item a{
+        border-top:1.5px solid #154d8e !important;
+        border-right:1.5px solid #154d8e !important;
+        border-bottom:none;
+        border-left:1.5px solid #154d8e !important;
+        background-color: #328cb6 !important;
+        color:#ffffff !important;
+        margin-top:5px;
+        font-size:14px;
+        padding:5px;
+
+    }
+    .site-contents .nav-item a:hover{
+        background-color: #62c0d6 !important;
+        color:#F4FF81 !important;
+        margin-top:5px;
+    }
 
 /* 
 =========================================================================
@@ -284,55 +369,24 @@
 */
     
     .site-footer {
-        height: 50px;
+        height: 30px;
         width: 100%;
         bottom: 0;
-        overflow: hidden;
-        position: absolute;
     }
     
     .footer {
-        background-color: #EEEEEE;
+        background-color: rgba(0,0,0,0.1);
         width: 100%;
-        max-width: calc(1600px - 20px);
-        min-width: calc(576px - 20px);
+        max-width: 800px;
+        min-width: 640px;
         margin-top: 20px;
-        padding-left: 10px;
-        padding-right: 10px;
         height: 30px;
-        margin-left: auto;
-        margin-right: auto;
-        right: 0;
-        left: 0;
         font-size: 12px;
+        line-height:30px;
         text-align: center;
-        overflow: hidden;
     }
 
-/* 
-=========================================================================
-= CONTENT ===============================================================
-=========================================================================
-*/
-    
-    .content {
-        width: 100%;
-        min-width: calc(576px - 20px);
-        max-width: calc(1600px - 20px);
-        height: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-bottom: 0px;
-    }
-    
-    .center {
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-    }
 
-    
 
 
 /*
