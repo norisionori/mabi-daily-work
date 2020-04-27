@@ -125,7 +125,7 @@
                 "ap"
             ],
             "title": "ベテラン魔族ダンジョン",
-            "subject": "ベテランダンジョンをクリアする",
+            "subject": "ベテランダンジョンをクリアする<br><small>フィアード→バリ→コイル→ルンダ→ペッカ→アルビ→キア→ラビ→マス</small>",
             "place": "ダンバートン",
             "npc": "プールナブロンの調査員",
             "rewards": "経験値,冒険家の印章,AP交換券",
@@ -183,7 +183,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "ベルテンミッション",
             "subject": "ベルテンミッションを完了する",
@@ -195,7 +195,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure",
+                "adventure",
                 "belfast"
             ],
             "title": "略奪者親分オーガ1匹退治",
@@ -208,7 +208,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "プリズンゴースト退治",
             "subject": "プリズンゴースト退治する",
@@ -220,7 +220,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "イカダで☆30",
             "subject": "イカダで☆30を達成する",
@@ -232,7 +232,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "気球で☆30",
             "subject": "気球で☆30を達成する",
@@ -244,7 +244,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "料理",
             "subject": "料理する",
@@ -256,7 +256,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "料理",
             "subject": "料理する",
@@ -268,7 +268,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "ハンディクラフト",
             "subject": "ハンディクラフト",
@@ -280,7 +280,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure",
+                "adventure",
                 "belfast"
             ],
             "title": "トマトバジルサラダを渡す",
@@ -293,7 +293,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure",
+                "adventure",
                 "belfast"
             ],
             "title": "ベジタブルカナッペを渡す",
@@ -306,7 +306,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "マジッククラフト",
             "subject": "マジッククラフト",
@@ -318,7 +318,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "ヒルウェン工学",
             "subject": "ヒルウェン工学",
@@ -330,7 +330,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "ホワイトハーブを渡す",
             "subject": "ホワイトハーブを渡す",
@@ -342,7 +342,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure",
+                "adventure",
                 "belfast"
             ],
             "title": "釣ったアイテムを渡す",
@@ -355,7 +355,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure",
+                "adventure",
                 "belfast"
             ],
             "title": "釣ったアイテムを渡す",
@@ -368,7 +368,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure",
+                "adventure",
                 "belfast"
             ],
             "title": "真珠貝を渡す",
@@ -381,7 +381,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "マカジキを渡す",
             "subject": "マカジキを渡す",
@@ -393,7 +393,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "交易する",
             "subject": "交易する",
@@ -405,7 +405,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "遺跡発見10回",
             "subject": "遺跡発見10回",
@@ -417,7 +417,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "NPC4名と会話",
             "subject": "NPC4名と会話",
@@ -429,7 +429,7 @@
         {
             "routine": "all",
             "category": [
-                "adoventure"
+                "adventure"
             ],
             "title": "NPCに補給品を渡す",
             "subject": "NPCに補給品を渡す",
