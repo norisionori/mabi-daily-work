@@ -1,75 +1,93 @@
 
 class todo {
-    constructor(todoListArray, cookie = {}) {
-        this.listData = this.defineListData(todoListArray);
-        this.setting = this.defineSetting(cookie);
+    constructor(id, todoListData, cookie = {}) {
+        this.id = id;
+        this.listData = this._setListData(todoListData);
+        this.setting = this._setSetting(cookie);
 
-        this.category = this.defineCategory();
+        this.category = this._setCategory(todoListData);
     }
 
-    defineListData(todoListArray) {
-        return todoListArray;
+    error(title, text) {
+        const html = `<div class="alert alert-danger" role="alert">${title} : ${text}</div>`;
+
+        $(this.id).html(html);
     }
 
-    defineCategory() {
-        const category = [
-            { name: "all", text: "すべて" },
-            { name: "daily", text: "日課" },
-            { name: "ap", text: "AP" },
-            { name: "exp", text: "経験値" },
-            { name: "gold", text: "ゴールド" },
-            { name: "adventure", text: "冒険家の印章" },
-            { name: "belfast", text: "ベルファストの印章" },
-        ];
+    _setCategory(todoListData) {
+        if (Array.isArray(todoListData.category)) {
+            return todoListData.category;
+        }
 
-        return category;
+        this.error("カテゴリ異常", "todo.json カテゴリ情報を読み込めませんでした");
     }
 
-    defineSetting() {
-
-    }
-
-    setCookie() {
-
-    }
-
-    getCategory() {
-        return this.category;
-    }
-
-    makeHtml() {
-        const viewHtml = (questsHtml) => {
-            const categoryHtml = () => {
-                let categoryHtml = ``;
-                for (const e of this.category) {
-                    categoryHtml += `<li class="nav-item"><a class="nav-link category" href="#" category="${e.name}">${e.text}</a></li>`;
-                }
-
-                return categoryHtml;
+    _setListData(todoListData) {
+        const modTodoData = (todoListData) => {
+            let num = 0;
+            for (let e of todoListData) {
+                e.done = false;
+                e.id = num;
+                num++;
             }
 
-            const html = ``
-                + `<div class="card todo mb-4">`
-                + `    <div class="card-header p-1">`
-                + `        <p class="float-left">デイリーワーク</p>`
-                + `        <button type="button" class="btn btn-sm btn-secondary float-right toggle" style="margin-left:5px;width:25px;">_</button>`
-                + `    </div>`
-                + `    <div class="card-body p-2">`
-                + `        <ul class="nav nav-tabs">${categoryHtml()}</ul>${questsHtml}`
-                + `    </div>`
-                + `    <div class="card-footer p-1">`
-                + `        <button class="btn btn-lg btn-primary w-100 reset">リセット</button>`
-                + `    </div>`
-                + `</div>`;
+            return todoListData;
+        };
 
-            return html;
+        if (Array.isArray(todoListData.todo)) {
+            const moddedTodoListData = modTodoData(todoListData.todo);
+
+            return moddedTodoListData;
+        }
+
+        this.error("データ異常", "todo.json 日課データを読み込めませんでした");
+    }
+
+    _setSetting() {
+
+    }
+
+    _setCookie() {
+
+    }
+
+    _makeQuestsHtml(category) {
+        const isShow = (quest, category) => {
+            const today = "sunday";
+
+            if (quest.done === true) {
+                return false;
+            }
+
+            if (today === today) {
+
+            }
+
+            if (category === "all") {
+                return true;
+            } else {
+                if (quest.category.indexOf(category) >= 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
 
         const questHtml = (quest) => {
+            const categoryPills = (category) => {
+                let html = ``;
+                for (const e of category) {
+                    html += `<span class="badge badge-light mr-2">${e}</span>`;
+                }
+
+                return html;
+            }
+
             const html = ``
-                + `<div class="card todo mb-4">`
+                + `<div class="card todo mb-4" questNum=${quest.id}>`
                 + `    <div class="card-header p-1">`
-                + `        <p class="float-left"><span class="badge badge-light">${quest.category}</span>　${quest.title}</p>`
+                + `        <p class="float-left">${categoryPills(quest.category)}　${quest.title}</p>`
                 + `        <button type="button" class="btn btn-sm btn-secondary float-right complete" style="margin-left:5px;width:25px;">×</button>`
                 + `    </div>`
                 + `    <div class="card-body p-2">`
@@ -84,73 +102,124 @@ class todo {
             return html;
         };
 
-
         let questsHtml = ``;
         for (const e of this.listData) {
-            questsHtml += questHtml(e);
+            if (isShow(e, category)) {
+                questsHtml += questHtml(e);
+            }
         }
 
-        const html = viewHtml(questsHtml);
+        return questsHtml;
+    }
+
+    _makeViewHtml() {
+        const categoryNavHtml = () => {
+            let categoryHtml = ``;
+            for (const e of this.category) {
+                categoryHtml += `<li class="nav-item"><a class="nav-link category" href="#" category="${e.name}">${e.text}</a></li>`;
+            }
+
+            return categoryHtml;
+        }
+
+        const html = ``
+            + `<div class="card todo mb-4">`
+            + `    <div class="card-header p-1">`
+            + `        <p class="float-left">デイリーワーク</p>`
+            + `        <button type="button" class="btn btn-sm btn-secondary float-right toggle" style="margin-left:5px;width:25px;">_</button>`
+            + `    </div>`
+            + `    <div class="card-body p-2">`
+            + `        <ul class="nav nav-tabs">${categoryNavHtml()}</ul><div id="quests"></div>`
+            + `    </div>`
+            + `    <div class="card-footer p-1">`
+            + `        <button class="btn btn-lg btn-primary w-100 reset">リセット</button>`
+            + `    </div>`
+            + `</div>`;
 
         return html;
     }
+
+    setDone(questId) {
+        const num = Number(questId);
+        this.listData[num].done = true;
+
+        return this.listData;
+    }
+
+    setReset() {
+        for (let e of this.listData) {
+            e.done = false;
+        }
+
+        return this.listData;
+    }
+
+    reflesh(category = "all") {
+        const that = this;
+        const html = this._makeQuestsHtml(category);
+
+        $("#quests").html(html);
+
+        // ◆cardおりたたみ
+        $(".toggle").unbind("click");
+        $(".toggle").on("click", function () {
+            $(this).parent("div").next("div").toggle(200);
+            if ($(this).text() == "□") {
+                $(this).text("＿");
+            } else {
+                $(this).text("□");
+            }
+        });
+
+        // ◆完了：カード非表示
+        $(".complete").unbind("click");
+        $(".complete").on("click", function () {
+            const questId = $(this).parent("div").parent(".todo").attr("questNum");
+            that.setDone(questId);
+
+            $(this).parent("div").parent(".todo").hide(200);
+        });
+
+        // ◆リセット：カード再表示
+        $(".reset").unbind("click");
+        $(".reset").on("click", function () {
+            that.setReset();
+            that.reflesh();
+        });
+
+        // ◆カテゴリ選択
+        $(".category").unbind("click");
+        $(".category").on("click", function () {
+            const selectedCategory = $(this).attr("category");
+
+            that.reflesh(selectedCategory);
+        });
+    }
+
+    render() {
+        const html = this._makeViewHtml();
+
+        $(this.id).html(html);
+        this.reflesh();
+    }
+
 }
 
 
 $(document).ready(function () {
     const path = "https://aaaanwz.github.io/mabi-daily-work/data/todo.json";
-    let todoList = {};
+    const id = "#todolist";
 
     $.getJSON(path)
         .done(function (todoList) {
             const cookie = {};
-            const t = new todo(todoList.todo, cookie);
+            const t = new todo(id, todoList, cookie);
 
-            const html = t.makeHtml();
-            $("#todolist").html(html);
-
-            // ◆cardおりたたみ
-            $(".toggle").on("click", function () {
-                $(this).parent("div").next("div").toggle(200);
-                if ($(this).text() == "□") {
-                    $(this).text("＿");
-                } else {
-                    $(this).text("□");
-                }
-            });
-
-            // ◆完了：カード非表示
-            $(".complete").on("click", function () {
-                $(this).parent("div").parent(".todo").hide(200);
-            });
-
-            // ◆リセット：カード再表示
-            $(".reset").on("click", function () {
-                $(".todo").show();
-            });
-
-            // ◆カテゴリ選択：
-            $(".category").on("click", function () {
-                const categoryList = t.getCategory();
-                const selectedCategory = $(this).attr("category");
-
-                if (selectedCategory === "all") {
-                    $(".all").show();
-                } else {
-                    for (const e of categoryList) {
-                        if (e.name === selectedCategory) {
-                            $(`.${e.name}`).show();
-                        } else {
-                            $(`.${e.name}`).hide();
-                        }
-                    }
-                }
-            });
-
+            t.render();
         })
         .fail(function () {
             const failHtml = `<div class="alert alert-danger" role="alert">ToDoリストデータの読み込みに失敗しました</div>`;
-            $("#todolist").html(failHtml);
+            $(id).html(failHtml);
         })
         .always(function () {
         });
